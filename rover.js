@@ -5,9 +5,8 @@
   3) generatorWatts
   4) receiveMessage - function
 
-Message is responsible for bundling the commands and delivering them to the rover.
+An object representing the mars rover. 
 */
-
 
 // Class Name Rover
 

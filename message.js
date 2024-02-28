@@ -5,7 +5,6 @@
   Message is responsible for bundling the commands and delivering them to the rover.
 */
 
-
 // Class Name Message
 
 class Message {
