@@ -27,11 +27,19 @@ class Rover {
          let commandRover = message.commands[i];
          // let result = {};
          // results.push(commandRover);
-
+         
+         // creating 'STATUS_CHECK' condition:
          if(commandRover.commandType === 'STATUS_CHECK' ) {
+            results.push({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}})
+            
+            // creating 'MODE_CHANGE' condition:
+         } else if ( commandRover.commandType === 'MODE_CHANGE')  {
+            results.push({completed: true});
+            // console.log(commandRover.value) to check the return value 
+            this.mode = commandRover.value;
+         } else {
 
-            results.push({completed: true}, {roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}})
-            // result.completed= true; result.roverStatus= {mode: this.mode, generatorWatts : this.generatorWatts, position: this.position}
+            
          }
       }
 

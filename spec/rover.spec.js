@@ -39,23 +39,21 @@ describe("Rover class", function() {
     let message = new Message('Test message for status check', commands);
     let response = testPosition.receiveMessage(message);
     expect(response.results[0].completed).toEqual(true);
-    expect(response.results[1].roverStatus.mode).toEqual('NORMAL');
-    expect(response.results[1].roverStatus.generatorWatts).toEqual(110);
-    expect(response.results[1].roverStatus.position).toEqual(87382098);
+    expect(response.results[0].roverStatus.generatorWatts).toEqual(110);
+    expect(response.results[0].roverStatus.position).toEqual(87382098);
+    expect(response.results[0].roverStatus.mode).toEqual('NORMAL');
     // expect(response.results[0]).toEqual({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}});
   });
   
-  // 10 test -responds correctly to the status check command:
-  it("responds correctly to the status check command", function() {
-    let testPosition = new Rover(87382098); // New position assigned
-    let commands =  [new Command('STATUS_CHECK')]; // checking Satus check command
-    let message = new Message('Test message for status check', commands);
+  // 11 test - responds correctly to the mode change command:
+  it("responds correctly to the mode change command", function() {
+    let testPosition = new Rover(88888); // New position assigned
+    let commands =  [new Command('MODE_CHANGE', 'LOW_POWER')]; // checking Mode change command
+    let message = new Message('Test message for MODE_CHANGE', commands);
     let response = testPosition.receiveMessage(message);
     expect(response.results[0].completed).toEqual(true);
-    expect(response.results[1].roverStatus.mode).toEqual('NORMAL');
-    expect(response.results[1].roverStatus.generatorWatts).toEqual(110);
-    expect(response.results[1].roverStatus.position).toEqual(87382098);
-    // expect(response.results[0]).toEqual({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}});
+    // expect(response.results[1].roverStatus.mode).toEqual('LOW_POWER');
+    expect(testPosition.mode).toEqual('LOW_POWER');
   });
 
 
