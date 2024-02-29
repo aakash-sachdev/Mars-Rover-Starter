@@ -10,7 +10,13 @@
 class Message {
    constructor(name, commands = []) {
      this.name = name;
-     this.commands = commands;
+     
+     // Logic for  checking name input :
+      if (!name) {
+         throw Error("Message name required.");
+      }
+     
+      this.commands = commands;
    }
 }
 
