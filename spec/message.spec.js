@@ -19,11 +19,10 @@ describe("Message class", function() {
     //Third Message test -
     it("contains a commands array passed into the constructor as the 2nd argument", function() {
       //Created a new variable with new object argument.
-      let newCommands = new Message('testName',["test","array","commands"]);
+      let newCommands = ["test","array","commands"];
+      let newMessage = new Message('testName', newCommands);
       //Checked the by comparing it using test.
-      expect(newCommands.commands).toEqual(["test","array","commands"]); //If it should pass with deep equality, replace "toBe" with "toStrictEqual"
-      //Expect(newCommands.commands[1]).toBe("array"); //"toEqual" is failing.
+      expect(newMessage.commands).toEqual(newCommands); //If it should pass with deep equality, replace "toBe" with "toStrictEqual"
+     //Expect(newCommands.commands[1]).toBe("array");
     });
-
-
 });
