@@ -24,13 +24,22 @@ class Rover {
       let results = []; // Each element in the array is an object that corresponds to one Command in message.commands.
 
       for (let i = 0; i < message.commands.length; i++) {
-         results.push(message.commands[i]);
+         let commandRover = message.commands[i];
+         // let result = {};
+         // results.push(commandRover);
+
+         if(commandRover.commandType === 'STATUS_CHECK' ) {
+
+            results.push({completed: true}, {roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}})
+            // result.completed= true; result.roverStatus= {mode: this.mode, generatorWatts : this.generatorWatts, position: this.position}
+         }
       }
+
       return {
          message: message.name,
-         result: results
+         results: results
       }
    }
 }
-// console.log(Rover.receiveMessage())
+
 module.exports = Rover;

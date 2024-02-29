@@ -28,21 +28,35 @@ describe("Rover class", function() {
     let commands =  [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')]; // Sent two commands
     let message = new Message('Test message', commands);
     let response = testPosition.receiveMessage(message);
-    expect((response.result).length).toBe(2);
+    // console.log(response.results) // To check what is the out put and it was a single object
+    expect((response.results).length).toBe(commands.length); // two number is returning error, if the command number changes it it will update.
   });
   
   // 10 test -responds correctly to the status check command:
-  // it("responds correctly to the status check command", function() {
-  //   let testPosition = new Rover(88888); // New position assigned
-  //   let commands =  [new Command('STATUS_CHECK')]; // checking Satus check command
-  //   let message = new Message('Test message for status check', commands);
-  //   let response = testPosition.receiveMessage(message);
-  //   expect((response.result).).toBe(2);
-  //   expect((response.result).).toBe(2);
-  //   expect((response.result).).toBe(2);
-  //   expect((response.result).).toBe(2);
-  // });
-
+  it("responds correctly to the status check command", function() {
+    let testPosition = new Rover(87382098); // New position assigned
+    let commands =  [new Command('STATUS_CHECK')]; // checking Satus check command
+    let message = new Message('Test message for status check', commands);
+    let response = testPosition.receiveMessage(message);
+    expect(response.results[0].completed).toEqual(true);
+    expect(response.results[1].roverStatus.mode).toEqual('NORMAL');
+    expect(response.results[1].roverStatus.generatorWatts).toEqual(110);
+    expect(response.results[1].roverStatus.position).toEqual(87382098);
+    // expect(response.results[0]).toEqual({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}});
+  });
+  
+  // 10 test -responds correctly to the status check command:
+  it("responds correctly to the status check command", function() {
+    let testPosition = new Rover(87382098); // New position assigned
+    let commands =  [new Command('STATUS_CHECK')]; // checking Satus check command
+    let message = new Message('Test message for status check', commands);
+    let response = testPosition.receiveMessage(message);
+    expect(response.results[0].completed).toEqual(true);
+    expect(response.results[1].roverStatus.mode).toEqual('NORMAL');
+    expect(response.results[1].roverStatus.generatorWatts).toEqual(110);
+    expect(response.results[1].roverStatus.position).toEqual(87382098);
+    // expect(response.results[0]).toEqual({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}});
+  });
 
 
 });
