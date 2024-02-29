@@ -25,7 +25,7 @@ class Rover {
 
          // creating 'STATUS_CHECK' condition:
          if(commandRover.commandType === 'STATUS_CHECK' ) {
-            results.push({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}})
+            results.push({completed: true, roverStatus : {mode: this.mode, generatorWatts : this.generatorWatts, position: this.position}})
             // creating 'MODE_CHANGE' condition:
          } else if ( commandRover.commandType === 'MODE_CHANGE')  {
             results.push({completed: true});
@@ -34,7 +34,6 @@ class Rover {
             // creating 'MOVE' condition:
          } else if ( commandRover.commandType === 'MOVE') {
             if(this.mode === 'LOW_POWER') { // If the value is LOW MODE it will update completed false and confirm that the rover’s position did not change.
-               console.log(results);
                results.push({completed: false});
             } else if (this.mode === 'NORMAL') {
                results.push({completed: true});
