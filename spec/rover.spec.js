@@ -34,13 +34,13 @@ describe("Rover class", function() {
   
   // 10 test -responds correctly to the status check command:
   it("responds correctly to the status check command", function() {
-    let testPosition = new Rover(87382098); // New position assigned
-    let commands =  [new Command('STATUS_CHECK')]; // checking Satus check command
-    let message = new Message('Test message for status check', commands);
+    let testPosition = new Rover(4321); // New position assigned
+    let commands =  [new Command('STATUS_CHECK')]; // checking Status check command
+    let message = new Message('TA power', commands);
     let response = testPosition.receiveMessage(message);
     expect(response.results[0].completed).toEqual(true);
     expect(response.results[0].roverStatus.generatorWatts).toEqual(110);
-    expect(response.results[0].roverStatus.position).toEqual(87382098);
+    expect(response.results[0].roverStatus.position).toEqual(4321);
     expect(response.results[0].roverStatus.mode).toEqual('NORMAL');
     // expect(response.results[0]).toEqual({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}});
   });
