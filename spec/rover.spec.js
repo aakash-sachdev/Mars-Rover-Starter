@@ -52,7 +52,6 @@ describe("Rover class", function() {
     let message = new Message('Test message for MODE_CHANGE', commands);
     let response = testPosition.receiveMessage(message);
     expect(response.results[0].completed).toEqual(true);
-    // expect(response.results[1].roverStatus.mode).toEqual('LOW_POWER');
     expect(testPosition.mode).toEqual('LOW_POWER');
   });
   
@@ -63,7 +62,6 @@ describe("Rover class", function() {
     let message = new Message('Test message for move in LOW_POWER mode', commands);
     let response = testPosition.receiveMessage(message);
     expect(response.results[1]).toEqual({completed: false});
-    // expect(response.results[1].roverStatus.mode).toEqual('LOW_POWER');
     expect(testPosition.position).toEqual(99999);
   });
   

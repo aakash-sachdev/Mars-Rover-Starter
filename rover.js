@@ -1,6 +1,3 @@
-// const Command = require ("./command") 
-// const Message = require ("./message")
-
 /*Class Rover details:
   Four properties:
   1) position
@@ -25,9 +22,7 @@ class Rover {
 
       for (let i = 0; i < message.commands.length; i++) {
          let commandRover = message.commands[i];
-         // let result = {};
-         // results.push(commandRover);
-         
+
          // creating 'STATUS_CHECK' condition:
          if(commandRover.commandType === 'STATUS_CHECK' ) {
             results.push({completed: true, roverStatus : {mode: "NORMAL", generatorWatts : 110, position: 87382098}})
@@ -45,8 +40,6 @@ class Rover {
                results.push({completed: true});
                this.position = commandRover.value;
             }
-
-
          }
       }
 
