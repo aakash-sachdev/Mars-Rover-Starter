@@ -66,6 +66,16 @@ describe("Rover class", function() {
     // expect(response.results[1].roverStatus.mode).toEqual('LOW_POWER');
     expect(testPosition.position).toEqual(99999);
   });
+  
+  // 13 test - responds with the position for the move command:
+  it("responds with the position for the move command", function() {
+    let testPosition = new Rover(11111); // New position assigned
+    let commands =  [new Command('MOVE', 22222)]; // checking Move command
+    let message = new Message('Test message for position of the move command', commands);
+    let response = testPosition.receiveMessage(message);
+    expect(response.results[0]).toEqual({completed: true});
+    expect(testPosition.position).toEqual(22222);
+  });
 
 
 });

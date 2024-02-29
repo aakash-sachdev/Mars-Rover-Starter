@@ -42,8 +42,8 @@ class Rover {
                console.log(results);
                results.push({completed: false});
             } else if (this.mode === 'NORMAL') {
-               this.position = commandRover.value;
                results.push({completed: true});
+               this.position = commandRover.value;
             }
 
 
